@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title> </title>
+		<script>
+			function frameText()
+			{
+				var text = document.getElementById("myText").value;
+				if (text.value == null) {alert ("Please input string"); return;}
+				text = text.split(" ");
+				var longest = text.reduce(
+					(a, b) => a.length >= b.length ? a : b
+				);
+				var starBar ="*".repeat(longest.length + 4) + "<br>";
+				document.getElementById("frame").innerHTML = starBar;
+				for(var i =0; i < text.length; i++){
+					var temp = "* " + text[i] + "&nbsp".repeat(longest.length - text[i].length) + " *<br>";
+					document.getElementById("frame").innerHTML = document.getElementById("frame").innerHTML + temp;
+				}
+				document.getElementById("frame").innerHTML = document.getElementById("frame").innerHTML + starBar;
+			}
+		</script>
+	</head>
+	<body>
+			Input Text: <input type="text" id="myText"><br>
+			<button onclick="frameText()">Enter</button>
+			<p id="frame" style="font-family:courier;"></p>
+	</body>
+</html>
